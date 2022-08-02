@@ -1,13 +1,13 @@
 // functions5.rs
-// Execute `rustlings hint functions5` or use the `hint` watch subcommand for a hint.
+// Make me compile! Execute `rustlings hint functions5` for hints :)
 
-// I AM NOT DONE
 
 fn main() {
     let answer = square(3);
-    println!("The square of 3 is {}", answer);
+    println!("The answer is {}", answer);
 }
 
+//no semicolon at the end of expression, if not it will turn to a statement which then will not returns values
 fn square(num: i32) -> i32 {
-    num * num;
+    num * num
 }

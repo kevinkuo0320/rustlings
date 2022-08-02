@@ -1,10 +1,10 @@
 // variables1.rs
 // Make me compile!
-// Execute `rustlings hint variables1` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
+// Execute the command `rustlings hint variables1` if you want a hint :)
 
 fn main() {
-    x = 5;
+
+    //To create a new variable, a declaration keyword is required
+    let x = 5;
     println!("x has the value {}", x);
 }

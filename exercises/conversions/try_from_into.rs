@@ -3,8 +3,6 @@
 // Basically, this is the same as From. The main difference is that this should return a Result type
 // instead of the target type itself.
 // You can read more about it at https://doc.rust-lang.org/std/convert/trait.TryFrom.html
-// Execute `rustlings hint try_from_into` or use the `hint` watch subcommand for a hint.
-
 use std::convert::{TryFrom, TryInto};
 
 #[derive(Debug, PartialEq)]
@@ -22,8 +20,6 @@ enum IntoColorError {
     // Integer conversion error
     IntConversion,
 }
-
-// I AM NOT DONE
 
 // Your task is to complete this implementation
 // and return an Ok result of inner type Color.
@@ -49,14 +45,26 @@ impl TryFrom<[i16; 3]> for Color {
 }
 
 // Slice implementation
-impl TryFrom<&[i16]> for Color {
+impl TryFrom<(i16, i16, i16)> for Color {
     type Error = IntoColorError;
-    fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {
+    fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
+        let (red, green, blue) = tuple;
+
+        for color in [red, green, blue] {
+            if !(0..=255).contains(&color) {
+                return Err(IntoColorError::IntConversion);
+            }
+        }
+        Ok(Self {
+            red: tuple.0 as u8,
+            green: tuple.1 as u8,
+            blue: tuple.2 as u8,
+        })
     }
 }
 
 fn main() {
-    // Use the `try_from` function
+    // Use the `from` function
     let c1 = Color::try_from((183, 65, 14));
     println!("{:?}", c1);
 

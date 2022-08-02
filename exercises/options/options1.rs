@@ -1,37 +1,32 @@
-// options1.rs
-// Execute `rustlings hint options1` or use the `hint` watch subcommand for a hint.
+// option1.rs
+// Make me compile! Execute `rustlings hint option1` for hints
 
-// I AM NOT DONE
 
 // you can modify anything EXCEPT for this function's signature
 fn print_number(maybe_number: Option<u16>) {
-    println!("printing: {}", maybe_number.unwrap());
-}
-
-// This function returns how much icecream there is left in the fridge.
-// If it's before 10PM, there's 5 pieces left. At 10PM, someone eats them
-// all, so there'll be no more left :(
-// TODO: Return an Option!
-fn maybe_icecream(time_of_day: u16) -> Option<u16> {
-    // We use the 24-hour system here, so 10PM is a value of 22
-    ???
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check_icecream() {
-        assert_eq!(maybe_icecream(10), Some(5));
-        assert_eq!(maybe_icecream(23), None);
-        assert_eq!(maybe_icecream(22), None);
+    match maybe_number {
+        Some(num) => println!("printing: {}", num),
+        None => println!("None"),
     }
+    if maybe_number.is_none() {
+        println!("`maybe_number` is NOT a number")
+    }
+    if maybe_number.is_some() {
+        println!("`maybe_number` is a number")
+    }
+    
+}
 
-    #[test]
-    fn raw_value() {
-        // TODO: Fix this test. How do you get at the value contained in the Option?
-        let icecreams = maybe_icecream(12);
-        assert_eq!(icecreams, 5);
+fn main() {
+    print_number(Some(13));
+    print_number(Some(99));
+
+    let mut numbers: [Option<u16>; 5] = [Some(1); 5];
+    for iter in 0..5 {
+        let number_to_add: u16 = {
+            ((iter * 1235) + 2) / (4 * 16)
+        };
+
+        numbers[iter as usize] = Some(number_to_add);
     }
 }

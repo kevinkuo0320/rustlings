@@ -1,9 +1,8 @@
 // variables6.rs
-// Execute `rustlings hint variables6` or use the `hint` watch subcommand for a hint.
+// Make me compile! Execute the command `rustlings hint variables6` if you want a hint :)
 
-// I AM NOT DONE
-
-const NUMBER = 3;
+//constant in rust must be declared a tyoe
+const NUMBER : i32 = 3;
 fn main() {
     println!("Number {}", NUMBER);
 }
